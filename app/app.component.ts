@@ -8,4 +8,5 @@ import { Component } from '@angular/core';
 export class AppComponent  {
   name = 'Interpolation v. Property Binding in Angular';
   example1 = 'https://repl.it/@lbouthillier/Middleware-Making-';
+  example3 = 'happy';
 }

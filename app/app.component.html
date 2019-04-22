@@ -17,8 +17,25 @@
   This seems to make sense, but then we're told "Of course, in many cases, they are equivalent." That got me wondering, when are they NOT equivalent, and when would I absolutely want to use interpolation instead of property binding, and vice versa? This practice set is designed to test those "edge cases" where interpolation and property binding will NOT achieve the same result.
 </p>
 <p>
-  Below are several examples involving passing strings into an Angular template. Note that by design, some do not work as intended. Your task is to fix the code, using either interpolation or property binding, so the below examples function as intended.
+  Below are two examples involving passing strings into an Angular template. Note that by design, one does not work as intended. Your task is to fix the code, either by converting the second example from property binding to interpolation, or by editing example2.component.ts, so the second link functions as intended.
 </p>
 <oL>
   <li>Example: Working link using interpolation and string concatenation. <a href="{{example1 + 'Exercise-1'}}" target=_blank>Click me</a>.</li>
-  <li>Example: Non-working link using property binding. </li>
+  <li>Example: Non-working link using property binding and attempted string concatenation. <example2 [ex2]="example2 + 'Q'">Click me</example2>.</li>
+<!-- Solution 1: modify example2.component.ts, adding the missing 'Q' directly to the end of the a href= in the template. (Easiest, but useless in the case of dynamic routes).-->
+<!-- Solution 2: take the 'a href=...' out of the example2.component.ts template field, add the line example2 = 'https://www.youtube.com/watch?v=dQw4w9WgXc'; to app.component.ts, then modify the template on this page to use string interpolation instead of property binding, i.e. <a href="{{example2 + 'Q'}}" target=_blank>Click me</a>. (More work, but useable to generate a dynamic route).-->
+</oL>
+<p>
+  That's an example involving string concatenation, and how to finish in this case a URL that is incomplete within its component. While the example may be contrived, in the case of dynamic content (e.g. an imageid parameter), you can see the importance of being able to fill in the missing part of the URL string (interpolation seems best for this use case, as modifying the example2.component.ts template is only possible if you *know* the value that needs to go there).
+</p>
+<p>
+  In the next example, we'll look at the same string, in example3.component.ts, being printed to the page via both interpolation and property binding, and the implications of that when a change is made to example3.component.ts:
+</p>
+<oL>
+  <li>I feel {{ example3 }} today!</li>
+  <li>I feel <example3 [ex3]="example3"></example3> today!</li>
+</oL>
+<p>
+  As an experiment, edit example3.component.ts, specifically the line template: '&#123; &#123; ex3 &#125;&#125;', and replace the interpolated variable in quotes with a string such as 'sad'. Note how one value above is updated, but the other is not.
+  <!-- Test case: modify example3.component.ts, changing the template value to 'sad', which will result in the second ordered list item above reading 'I feel sad today!' while the first ordered list item will still say 'I feel happy today!' in spite of the change (since it's drawing its value from app.component.ts.-->
+</p>
