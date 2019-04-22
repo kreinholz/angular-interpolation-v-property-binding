@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: [ './app.component.css' ]
 })
 export class AppComponent  {
-  name = 'CSCSI E31 Students';
+  name = 'Interpolation v. Property Binding in Angular';
+  example1 = 'https://repl.it/@lbouthillier/Middleware-Making-';
 }
