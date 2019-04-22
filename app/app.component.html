@@ -1,0 +1,17 @@
+<hello name="{{ name }}"></hello>
+<p>
+  In Week 11, and in Video11.6 in particular, we looked at the differences and similarities between interpolation and property binding in Angular. The following guidelines for when to use interpolation vice property binding were given:
+</p>
+<ul>
+  <li>
+    When you use interpolation, you're assigning strings to the properties or attributes of the component (&#60;app-photo&#62;) or DOM Element (<img>)
+  </li>
+  <li>
+    When you use property binding, you're attaching an object to a property of the component or DOM Element. In the code example above, '&#60;app-photo [photo]="stringVariable"&#62;&#60;/app-photo&#62;', photo is a property of the component class. In '&#60;img [src]="photo.imageurl" /&#62;', src is an actual property of the DOM object, not just an HTML attribute. This is an important difference.
+  </li>
+  <li>
+    If you want to assign a value to an HTML attribute that's not an actual property of the DOM element (such as an aria attribute or something like colspan), you have to use interpolation, or a special binding syntax that prepends attr. to the attribute name.
+  </li>
+</ul>
+<p>
+  This seems to make sense, but then we're told "Of course, in many cases, they are equivalent." That got me wondering, when are they different, and when would I absolutely want to use interpolation instead of property binding, and vice versa? This practice set is designed to test those "edge cases" where interpolation and property binding will NOT achieve the same result.
